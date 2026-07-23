@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MessageSquare, X, Send, Bot, User, Sparkles, PhoneCall, RefreshCw, ChevronDown, CheckCheck } from "lucide-react";
-import assistantAvatar from "@/assets/images/dibitech_assistant_avatar_1784817647695.jpg";
+import assistantAvatar from "@/assets/images/dibibot_avatar_user_1784819267790.jpg";
 
 interface Message {
   id: string;
