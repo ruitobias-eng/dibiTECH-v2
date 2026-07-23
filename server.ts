@@ -241,16 +241,23 @@ Return strictly VALID JSON without markdown formatting around it if possible, or
       const client = getAIClient();
       if (client) {
         try {
-          const systemInstruction = `Você é o DibiBot, o Assistente Virtual inteligente da dibiTECH TI & Automação (localizada em Apiaí - SP, Brasil).
-Seu objetivo é prestar atendimento amigável, técnico e ágil para clientes e interessados em projetos de tecnologia e engenharia.
+          const systemInstruction = `Você é o DibiBot AI, o Assistente Virtual e Consultor Técnico de TI da dibiTECH TI & Automação (localizada em Apiaí - SP, Brasil).
+Seu objetivo é prestar atendimento amigável, técnico, ágil e altamente capacitado para clientes e visitantes.
+
+Você responde tanto a dúvidas corporativas e comerciais da dibiTECH quanto a **perguntas e diagnósticos de Tecnologia da Informação (TI)**, como:
+- **Redes & Conectividade:** Problemas de Wi-Fi, lentidão, endereçamento IP, DNS, roteadores, switches, VPN, regras de firewall e ping.
+- **Segurança Cibernética:** Prevenção contra vírus/ransomware, boas práticas de senhas, backups automatizados (regra 3-2-1), LGPD e auditoria de TI.
+- **Servidores & Nuvem:** Linux (Ubuntu, Debian, RedHat), Windows Server, Active Directory, virtualização (Docker, Proxmox), AWS, Azure e Google Cloud.
+- **Desenvolvimento & Banco de Dados:** SQL (PostgreSQL, MySQL, SQL Server), NoSQL, APIs REST, Python, C#, Java, Delphi, boas práticas de código.
+- **Automação Industrial:** Funcionamento de CLPs, sensores, protocolos industriais (Modbus, Profinet, MQTT), telas IHMs e sistemas SCADA.
 
 Serviços oferecidos pela dibiTECH:
 1. Automação Industrial & Indústria 5.0: Programação de CLPs/PLCs, telas IHMs, sistemas SCADA, redes industriais e cobots.
-2. Chatbot & IA Conversacional: Desenvolvimento de assistentes virtuais 24/7 com inteligência artificial para atendimento e automação.
-3. Infraestrutura de Nuvem & TI: Gestão de servidores, segurança cibernética, backups e migração para AWS, Azure e Google Cloud.
-4. Ciência de Dados & Machine Learning: BI, modelos preditivos e otimização de processos.
+2. Chatbot & IA Conversacional: Assistentes virtuais 24/7 com inteligência artificial para atendimento e automação.
+3. Infraestrutura de Nuvem & TI Corporativa: Gestão de servidores, segurança cibernética, backups em nuvem e monitoramento Zabbix.
+4. Ciência de Dados & Machine Learning: Business Intelligence (BI), análises preditivas e modelos de IA.
 5. Sistemas ERP & Software sob medida: Desenvolvimento em Java, .NET, C++, Python, APIs e bancos de dados.
-6. Aplicativos Mobile & Delivery: Apps corporativos e logísticos com geolocalização e rastreamento.
+6. Aplicativos Mobile & Logística: Apps corporativos com geolocalização e rastreamento.
 
 Contatos e Equipe da dibiTECH:
 - WhatsApp: (15) 98100-9064
@@ -260,10 +267,11 @@ Contatos e Equipe da dibiTECH:
 - Engenheiros Especialistas: Rodrigo Carvalho (Engenharia e Inovação Tecnológica, IoT & BI) e Rui Tobias Carvalho (Engenharia de Computação, Ciência de Dados & Indústria 4.0/5.0).
 
 Regras de Resposta:
-- Seja prestativo, claro, empático e objetivo.
-- Use marcas em negrito e listas quando útil para leitura.
+- Seja atencioso, técnico, didático e objetivo.
+- Quando o usuário fizer uma pergunta de TI (ex: "O que é DNS?", "Minha rede está lenta, o que fazer?", "Como funciona o backup na nuvem?"), dê respostas bem explicadas e com passos práticos, relacionando com a solução que a dibiTECH pode oferecer.
+- Use negrito e listas organizadas para facilitar a leitura.
 - Responda no idioma do usuário (padrão em Português).
-- Quando apropriado, sugira solicitar um orçamento ou entrar em contato direto pelo WhatsApp (15) 98100-9064 ou e-mail.`;
+- Quando apropriado, sugira solicitar um orçamento ou entrar em contato direto pelo WhatsApp (15) 98100-9064 ou e-mail!`;
 
           // Format chat contents
           const formattedContents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
@@ -308,20 +316,28 @@ Regras de Resposta:
       const lowerMsg = message.toLowerCase();
       let reply = "";
 
-      if (lowerMsg.includes("orçamento") || lowerMsg.includes("quote") || lowerMsg.includes("preço") || lowerMsg.includes("valor") || lowerMsg.includes("custo")) {
-        reply = `Elaboramos orçamentos personalizados para o seu projeto! 🛠️\n\nPodemos calcular a estimativa para:\n• **Automação Industrial & CLPs**\n• **Sistemas ERP & Software Sob Medida**\n• **Nuvem & Infraestrutura de TI**\n• **Desenvolvimento de Chatbot IA**\n\nVocê pode usar nossa calculadora de orçamento na página ou falar diretamente com nossos engenheiros pelo **WhatsApp (15) 3552-2325** ou e-mail **engenharia@dibitech.com.br**!`;
+      if (lowerMsg.includes("rede") || lowerMsg.includes("wifi") || lowerMsg.includes("wi-fi") || lowerMsg.includes("ip") || lowerMsg.includes("dns") || lowerMsg.includes("internet") || lowerMsg.includes("vpn")) {
+        reply = `🌐 **Suporte e Diagnóstico de Redes & Conectividade**\n\nPara resolver ou otimizar a rede da sua empresa:\n1. **Verifique o DNS:** Teste os servidores DNS públicos (como \`1.1.1.1\` ou \`8.8.8.8\`).\n2. **Conflito de IP:** Certifique-se de que a rede utiliza DHCP configurado corretamente com faixa adequada.\n3. **Infraestrutura:** Cabos Cat6 e roteadores corporativos evitam gargalos em redes comerciais.\n4. **VPN Corporativa:** Para acesso remoto seguro à infraestrutura da empresa.\n\n💡 A **dibiTECH** projeta e gerencia redes corporativas e infraestrutura de TI de alta velocidade! Quer falar com um engenheiro no **WhatsApp (15) 98100-9064**?`;
+      } else if (lowerMsg.includes("segurança") || lowerMsg.includes("firewall") || lowerMsg.includes("antivirus") || lowerMsg.includes("ransomware") || lowerMsg.includes("hacker") || lowerMsg.includes("lgpd") || lowerMsg.includes("proteger")) {
+        reply = `🔒 **Segurança Cibernética & Proteção de Dados**\n\nPassos essenciais para proteger os sistemas da sua empresa:\n- **Firewall Dedicado:** Filtre conexões suspeitas e portas abertas desnecessárias.\n- **Autenticação em 2 Etapas (MFA):** Obrigue verificação em 2 fatores para e-mails e sistemas.\n- **Política de Backups:** Mantenha cópias isoladas fora da rede principal (Regra 3-2-1).\n- **Conscientização:** A maioria das invasões ocorre por engenharia social e e-mails de phishing.\n\n🛡️ A **dibiTECH** realiza auditorias de segurança e implementação de firewalls/VPNs corporativas!`;
+      } else if (lowerMsg.includes("lento") || lowerMsg.includes("suporte") || lowerMsg.includes("formatar") || lowerMsg.includes("computador") || lowerMsg.includes("hardware") || lowerMsg.includes("chamado")) {
+        reply = `💻 **Suporte Técnico & Manutenção de Computadores**\n\nPrincipais causas de lentidão em sistemas corporativos:\n• **Uso de HD mecânico antigo:** Substituição por SSD NVMe acelera em até 10x.\n• **Memória RAM insuficiente:** Recomenda-se no mínimo 8GB a 16GB para sistemas modernos.\n• **Processos e malwares em segundo plano:** Limpeza técnica e verificação de inicialização.\n• **Aquecimento excessivo:** Troca de pasta térmica e limpeza interna preventiva.\n\n🔧 A **dibiTECH** oferece contratos de suporte de TI preventivo e corretivo para empresas!`;
+      } else if (lowerMsg.includes("banco de dados") || lowerMsg.includes("sql") || lowerMsg.includes("software") || lowerMsg.includes("sistema") || lowerMsg.includes("desenvolvimento") || lowerMsg.includes("programação")) {
+        reply = `💻 **Desenvolvimento de Software & Banco de Dados**\n\nTrabalhamos com arquitetura moderna e escalável:\n- **Linguagens:** C#, .NET, Python, C/C++, Java, Delphi e TypeScript\n- **Bancos de Dados:** PostgreSQL, SQL Server, Firebird, MySQL e MongoDB\n- **Integração:** APIs REST/GraphQL e sincronização em tempo real\n\nPrecisa desenvolver um sistema sob medida ou otimizar seu banco de dados atual?`;
+      } else if (lowerMsg.includes("orçamento") || lowerMsg.includes("quote") || lowerMsg.includes("preço") || lowerMsg.includes("valor") || lowerMsg.includes("custo")) {
+        reply = `Elaboramos orçamentos personalizados para o seu projeto! 🛠️\n\nPodemos calcular a estimativa para:\n• **Automação Industrial & CLPs**\n• **Sistemas ERP & Software Sob Medida**\n• **Nuvem & Infraestrutura de TI**\n• **Desenvolvimento de Chatbot IA**\n\nVocê pode usar nossa calculadora de orçamento na página ou falar diretamente com nossos engenheiros pelo **WhatsApp (15) 98100-9064**, telefone **(15) 3552-2325** ou e-mail **engenharia@dibitech.com.br**!`;
       } else if (lowerMsg.includes("contato") || lowerMsg.includes("whatsapp") || lowerMsg.includes("telefone") || lowerMsg.includes("email") || lowerMsg.includes("falar")) {
-        reply = `Você pode falar conosco através dos canais diretos:\n\n📞 **Telefone / WhatsApp:** (15) 3552-2325\n✉️ **E-mail:** engenharia@dibitech.com.br\n📍 **Endereço:** Apiaí - SP, Brasil\n\nNossa equipe técnica atende de segunda a sexta, das 08h às 18h!`;
+        reply = `Você pode falar conosco através dos canais diretos:\n\n📱 **WhatsApp:** (15) 98100-9064\n📞 **Telefone:** (15) 3552-2325\n✉️ **E-mail:** engenharia@dibitech.com.br\n📍 **Endereço:** Apiaí - SP, Brasil\n\nNossa equipe técnica atende de segunda a sexta, das 08h às 18h!`;
       } else if (lowerMsg.includes("clp") || lowerMsg.includes("plc") || lowerMsg.includes("scada") || lowerMsg.includes("ihm") || lowerMsg.includes("automação")) {
-        reply = `A dibiTECH é especialista em **Automação Industrial & Indústria 5.0**! 🤖\n\nOferecemos:\n- Programação e integração de CLPs (Siemens, Rockwell, Schneider, Delta)\n- Desenvolvimento de sistemas SCADA e telas IHMs\n- Integração de sensores, atuadores e redes industriais\n- Células com robôs e cobots para otimização da produção\n\nQuer agendar uma avaliação técnica para sua fábrica?`;
+        reply = `A dibiTECH é especialista em **Automação Industrial & Indústria 5.0**! 🤖\n\nOferecemos:\n- Programação e integração de CLPs (Siemens, Rockwell, Schneider, Delta)\n- Desenvolvimento de sistemas SCADA e telas IHMs\n- Integração de sensores, atuadores e redes industriais (Modbus, Profinet, MQTT)\n- Células com robôs e cobots para otimização da produção\n\nQuer agendar uma avaliação técnica para sua fábrica?`;
       } else if (lowerMsg.includes("chatbot") || lowerMsg.includes("ia") || lowerMsg.includes("inteligência artificial") || lowerMsg.includes("atendimento")) {
-        reply = `Criamos **Chatbots com Inteligência Artificial** sob medida para o seu negócio! 💬✨\n\nNossos chatbots funcionam 24/7 no seu site, WhatsApp ou sistemas internos, realizando atendimentos automáticos, qualificação de leads, agendamentos e suporte técnico.\n\nGostaria de ver uma demonstração ou integrar no seu atendimento?`;
+        reply = `Criamos **Chatbots com Inteligência Artificial** sob medida para o seu negócio! 💬✨\n\nNossos chatbots funcionam 24/7 no seu site, WhatsApp ou sistemas internos, realizando atendimentos automáticos, qualificação de leads, suporte técnico de TI e respostas para clientes.\n\nGostaria de integrar um assistente IA na sua empresa?`;
       } else if (lowerMsg.includes("nuvem") || lowerMsg.includes("cloud") || lowerMsg.includes("servidor") || lowerMsg.includes("aws") || lowerMsg.includes("azure")) {
-        reply = `Oferecemos **Infraestrutura de Nuvem & Servidores** de alta disponibilidade ☁️:\n\n- Migração e gestão em Azure, AWS e Google Cloud\n- Rotinas automatizadas de backup e recuperação de desastres\n- Monitoramento de segurança e suporte técnico especializado\n\nComo está a estrutura atual de TI da sua empresa?`;
+        reply = `Oferecemos **Infraestrutura de Nuvem & Servidores** de alta disponibilidade ☁️:\n\n- Migração e gestão em Azure, AWS e Google Cloud\n- Rotinas automatizadas de backup (regra 3-2-1) e recuperação de desastres\n- Monitoramento de segurança Zabbix e suporte técnico especializado\n\nComo está a estrutura atual de TI da sua empresa?`;
       } else if (lowerMsg.includes("equipe") || lowerMsg.includes("rodrigo") || lowerMsg.includes("rui") || lowerMsg.includes("engenheiro")) {
-        reply = `A equipe técnica da dibiTECH conta com engenheiros multidisciplinares de vasta experiência:\n\n👨‍💻 **Rodrigo:** Especialista em Engenharia de Computação, Sistemas Embarcados, IoT e BI.\n👨‍🔬 **Rui:** Especialista em Engenharia de Computação, Automação Industrial, Ciência de Dados e Indústria 5.0.`;
+        reply = `A equipe técnica da dibiTECH conta com engenheiros multidisciplinares de vasta experiência:\n\n👨‍💻 **Rodrigo Carvalho:** Especialista em Engenharia de Computação, Inovação Tecnológica, IoT e BI.\n👨‍🔬 **Rui Tobias Carvalho:** Especialista em Engenharia de Computação, Automação Industrial, Ciência de Dados & Indústria 4.0/5.0.`;
       } else {
-        reply = `Olá! Sou o **DibiBot**, assistente virtual da **dibiTECH TI & Automação**. 👋\n\nOferecemos soluções completas em:\n• **Automação Industrial** (CLP, SCADA, IHMs)\n• **Sistemas & ERPs sob medida**\n• **Chatbots com IA**\n• **Infraestrutura de Nuvem & TI**\n• **Ciência de Dados & BI**\n\nComo posso ajudar você hoje? Se desejar, também pode nos chamar no **WhatsApp (15) 3552-2325**!`;
+        reply = `Olá! Sou o **DibiBot AI**, assistente virtual e consultor técnico de TI da **dibiTECH TI & Automação**. 👋\n\nPosso tirar suas dúvidas sobre:\n• **Diagnósticos de TI, Redes & Segurança Cibernética**\n• **Automação Industrial** (CLP, SCADA, IHMs)\n• **Sistemas & ERPs sob medida**\n• **Infraestrutura de Nuvem & Servidores**\n• **Chatbots com IA & Ciência de Dados**\n\nComo posso ajudar você hoje? Se desejar, também pode nos chamar no **WhatsApp (15) 98100-9064**!`;
       }
 
       return res.json({
